@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>Javascript</title>
+ </head>
+ <body> 
+   <script>  
+    function getYoungEmployees() {
+        let vasia = { name: "Вася", age: 25 };
+        let petia = { name: "Петя", age: 30 };
+        let masha = { name: "Маша", age: 28 };
+        let egor = { name: "Егор", age: 40 };
+        let dima = { name: "Дима", age: 35 };
+        let lena = { name: "Лена", age: 18 };
+
+        let users = [ vasia, petia, masha, egor, dima, lena ];
+        let array = users.slice();
+        let sum = 0;
+        let sortByKey = array.sort(function(a, b) {
+          return a.age - b.age;
+        });
+         let getAverageAge = sortByKey.reduce(function(a, b) {
+            return a + b.age;
+         }, sum);
+       console.log(sortByKey);
+       console.log(getAverageAge);
+    }
+    getYoungEmployees();
+   </script>
+ </body>
+</html>"# methods" 
