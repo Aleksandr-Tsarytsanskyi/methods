@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <title>Javascript</title>
- </head>
- <body> 
-   <script> 
-   //потому что аргументами является callback функция, нужно добавить скобки 
-    function getPasswordFromUser(success, fail) {
-      let password = prompt("Password?", '');
-      if (password == "rockstar") success();
-      else fail();
-    }
-    let user = {
-    name: 'Andrew',
+<head>
+    <title>javascript</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="" />
+	<meta name="keywords" content="" />
+</head>
+<body>
+	<script>
+		let arr = ["ПриВЕт"];
+		let string = arr.filter(filterUpperCase);
 
-    loginSuccess() {
-      alert(`${this.name} logged in`);
-    },
-
-    loginFail() {
-      alert(`${this.name} failed to log in`);
-    },
-
-  };
-
-getPasswordFromUser(user.loginSuccess(), user.loginFail());
-
-   </script>
- </body>
-</html>
+		function filterUpperCase(string) {
+			return this.string = ["ПВЕ"];
+		 };
+		console.log(arr);
+		console.log(filterUpperCase.call(string));
+	</script>
+</body>
+</html> 
+ 
