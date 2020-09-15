@@ -5,28 +5,28 @@
   <title>Javascript</title>
  </head>
  <body> 
-   <script>  
-    function getYoungEmployees() {
-        let vasia = { name: "Вася", age: 25 };
-        let petia = { name: "Петя", age: 30 };
-        let masha = { name: "Маша", age: 28 };
-        let egor = { name: "Егор", age: 40 };
-        let dima = { name: "Дима", age: 35 };
-        let lena = { name: "Лена", age: 18 };
-
-        let users = [ vasia, petia, masha, egor, dima, lena ];
-        let array = users.slice();
-        let sum = 0;
-        let sortByKey = array.sort(function(a, b) {
-          return a.age - b.age;
-        });
-         let getAverageAge = sortByKey.reduce(function(a, b) {
-            return a + b.age;
-         }, sum);
-       console.log(sortByKey);
-       console.log(getAverageAge);
+   <script> 
+   //потому что аргументами является callback функция, нужно добавить скобки 
+    function getPasswordFromUser(success, fail) {
+      let password = prompt("Password?", '');
+      if (password == "rockstar") success();
+      else fail();
     }
-    getYoungEmployees();
+    let user = {
+    name: 'Andrew',
+
+    loginSuccess() {
+      alert(`${this.name} logged in`);
+    },
+
+    loginFail() {
+      alert(`${this.name} failed to log in`);
+    },
+
+  };
+
+getPasswordFromUser(user.loginSuccess(), user.loginFail());
+
    </script>
  </body>
-</html>"# methods" 
+</html>
