@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +9,91 @@
 </head>
 <body>
 	<script>
-		let arr = ["ПриВЕт"];
-		let string = arr.filter(filterUpperCase);
-
-		function filterUpperCase(string) {
-			return this.string = ["ПВЕ"];
-		 };
-		console.log(arr);
-		console.log(filterUpperCase.call(string));
+		function Human(config) {
+			this.name = config.name;
+			this.surname  = config.surname;
+			this.age  = config.age;
+			this.getFullName = function() {
+				return this.setFullName().join("-");
+			}
+			this.setFullName = function(fullName) {
+				let a =  this.name + " " + this.surname;
+				return a.split(" ");
+			}
+		}
+		function Teacher(config) {
+			Human.call(this, config);
+			this.group = config.group; 
+		}
+		function Student(config) {
+			Human.call(this, config);
+			this.name = config.name;
+			this.appraisal = config.appraisal;
+			this.averageMark = function () {
+				let sum = this.appraisal.reduce((a, b) => a + b, 0);
+				let result = sum / this.appraisal.length;
+				return result;
+			}
+			this.minMark = function () {
+				let min = this.appraisal;
+				for (let i = 1; i < min.length; i++) {
+					if (min[i] < min[0]) {
+						min[0] = min[i];
+					}
+				}	
+				return min[0]
+			}
+			this.maxMark = function () {
+				let max = this.appraisal;
+				for (let i = 1; i < max.length; i++) {
+					if (max[i] > max[0]) {
+						max[0] = max[i];
+					}
+				}
+				return max[0];
+			}
+			this.getFullName = function() {
+				let fullname = this.name + " " + this.surname;
+				let string = fullname += "-student";
+				return string;
+			}
+		}
+		Teacher.prototype = Object.create(Human.prototype),
+		Teacher.prototype.constructor = Teacher
+		Teacher.prototype = Object.assign(Teacher.prototype, {
+			getListOfNamesByAverageMark() {
+				console.log("sort")
+			},
+			getStudentByName(name) {
+				return this.name;
+			},
+			removeStudentByName(name) {
+				return delete this.name;
+			},
+			updateStudentByName() {
+				console.log("student");
+			}
+		 });
+		 Student.prototype = Object.create(Human.prototype);
+		 Student.prototype.constructor = Student;
+		 let student = new Student({
+			 name: "Bred",
+			 surname: "Pitt",
+			 appraisal: [1, 2, 3, 4, 5, 6],
+		 })	
+		let human = new Human({
+			name: "John",
+			surname: "Smith",
+			age: 40,
+		});
+		let teacher = new Teacher({
+			name: "Liam",
+			surname: "Neeson",
+			age: 25,
+			group: [{name: "Will", appraisal: [1, 2, 6, 8 , 3, 4]},{name: "John", appraisal: [3, 6, 7, 2, 1, 9]},{name: "Petter", appraisal: [8, 2, 7, 4, 1, 8]},{name: "Angelina", appraisal: [5, 3, 1, 2, 9, 7]},{name: "Johnny", appraisal: [5, 4, 8, 1, 3, 10]}],
+		})
+		console.log(human, teacher, student);
+		
 	</script>
 </body>
 </html> 
- 
